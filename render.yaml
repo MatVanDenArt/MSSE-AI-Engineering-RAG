@@ -25,11 +25,3 @@ services:
     plan: free
     # Start Streamlit on the dynamically assigned Render port
     dockerCommand: "streamlit run app.py --server.port $PORT --server.address 0.0.0.0"
-    envVars:
-      # Automatically fetch the deployed public URL of the backend service
-      # and inject it into the frontend's environment!
-      - key: API_BASE_URL
-        fromService:
-          type: web
-          name: hr-backend
-          property: hostport
