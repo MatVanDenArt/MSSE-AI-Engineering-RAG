@@ -3,7 +3,9 @@ import glob
 from dotenv import load_dotenv
 from langchain_community.document_loaders import TextLoader
 from langchain_text_splitters import MarkdownHeaderTextSplitter, RecursiveCharacterTextSplitter
-from langchain_huggingface import HuggingFaceEmbeddings
+import requests
+from typing import List
+from langchain_core.embeddings import Embeddings
 from langchain_community.vectorstores import Chroma
 
 def main():
@@ -61,9 +63,10 @@ def main():
         
     print(f"Created {len(all_chunks)} chunks from {len(md_files)} files.")
     
-    # Initialize the embedding model
-    print("Initializing embedding model (all-MiniLM-L6-v2)...")
-    embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+    # Initialize the custom REST embedding model
+    print("Initializing custom GeminiRESTEmbeddings...")
+    gemini_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
+    embeddings = GeminiRESTEmbeddings(api_key=gemini_key)
     
     # Create and persist the Chroma vector database
     print(f"Saving vector database to {persist_directory}...")
@@ -74,6 +77,22 @@ def main():
     )
     
     print("Ingestion complete. Vector database built successfully.")
+
+class GeminiRESTEmbeddings(Embeddings):
+    def __init__(self, api_key: str):
+        self.api_key = api_key
+        self.url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-2:embedContent?key={api_key}"
+
+    def embed_documents(self, texts: List[str]) -> List[List[float]]:
+        embeddings = []
+        for text in texts:
+            response = requests.post(self.url, json={"model": "models/gemini-embedding-2", "content": {"parts": [{"text": text}]}})
+            response.raise_for_status()
+            embeddings.append(response.json()["embedding"]["values"])
+        return embeddings
+
+    def embed_query(self, text: str) -> List[float]:
+        return self.embed_documents([text])[0]
 
 if __name__ == "__main__":
     main()

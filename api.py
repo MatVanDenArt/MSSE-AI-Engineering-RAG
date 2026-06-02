@@ -4,7 +4,9 @@ from pydantic import BaseModel
 from dotenv import load_dotenv
 
 from langchain_community.vectorstores import Chroma
-from langchain_huggingface import HuggingFaceEmbeddings
+import requests
+from typing import List
+from langchain_core.embeddings import Embeddings
 from langchain_groq import ChatGroq
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import PromptTemplate
@@ -15,8 +17,25 @@ load_dotenv()
 
 app = FastAPI(title="Wood Group HR API")
 
+class GeminiRESTEmbeddings(Embeddings):
+    def __init__(self, api_key: str):
+        self.api_key = api_key
+        self.url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-2:embedContent?key={api_key}"
+
+    def embed_documents(self, texts: List[str]) -> List[List[float]]:
+        embeddings = []
+        for text in texts:
+            response = requests.post(self.url, json={"model": "models/gemini-embedding-2", "content": {"parts": [{"text": text}]}})
+            response.raise_for_status()
+            embeddings.append(response.json()["embedding"]["values"])
+        return embeddings
+
+    def embed_query(self, text: str) -> List[float]:
+        return self.embed_documents([text])[0]
+
 # Initialize Retriever at startup (Fetch Top 4 directly for Render Free Tier)
-embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+gemini_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
+embeddings = GeminiRESTEmbeddings(api_key=gemini_key)
 vectorstore = Chroma(persist_directory="./chroma_db", embedding_function=embeddings)
 retriever = vectorstore.as_retriever(search_kwargs={"k": 4})
 

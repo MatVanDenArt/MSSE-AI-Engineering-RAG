@@ -7,9 +7,11 @@ This project utilizes a modern **Client-Server Architecture** to separate the us
 
 ## Architecture & Design Decisions
 
-### 1. Vector Database & Embedding (Local)
-We use **ChromaDB** to locally store the document embeddings. It is lightweight, file-system based (no cloud DB setup required), and inherently supports LangChain.
-- **Embedding Model**: `all-MiniLM-L6-v2` (HuggingFace). This is a highly efficient, free-tier local embedding model perfectly suited for mapping text chunks to dense vectors without cloud overhead.
+### 1. Vector Database & Embedding (Custom REST API)
+We use **ChromaDB** to store the document embeddings. 
+- **Original Intent**: We initially intended to use a local HuggingFace embedding model (`all-MiniLM-L6-v2`) and a CrossEncoder for a Two-Stage Retrieval pipeline to maximize fidelity.
+- **The Pivot (Cloud Memory Optimization)**: During deployment, we discovered that initializing the core PyTorch engine (`sentence-transformers`) required to run even the smallest local HuggingFace models exceeded Render's strict 512MB Free Tier RAM limit, causing the container to instantly crash `OOM (Out of Memory)`.
+- **The Solution**: To guarantee deployment viability without upgrading to a paid tier, we completely eradicated PyTorch from the backend environment. We developed a custom `GeminiRESTEmbeddings` class in Python that manually interfaces with Google's Gemini `models/gemini-embedding-2` REST API. This offloads all vector math to Google's cloud, dropping our backend memory footprint to ~150MB while maintaining high-quality semantic vectors.
 
 ### 2. Chunking Strategy
 We parse markdown files using a two-stage approach:
