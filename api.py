@@ -11,21 +11,14 @@ from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
 
-from sentence_transformers import CrossEncoder
-
 load_dotenv()
 
 app = FastAPI(title="Wood Group HR API")
 
-# Initialize Retriever at startup (Fetch Top 15 instead of 4)
+# Initialize Retriever at startup (Fetch Top 4 directly)
 embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 vectorstore = Chroma(persist_directory="./chroma_db", embedding_function=embeddings)
-retriever = vectorstore.as_retriever(search_kwargs={"k": 15})
-
-# Initialize CrossEncoder for Re-ranking
-print("Loading CrossEncoder model...")
-cross_encoder = CrossEncoder('cross-encoder/ms-marco-MiniLM-L-6-v2')
-print("CrossEncoder loaded successfully!")
+retriever = vectorstore.as_retriever(search_kwargs={"k": 4})
 
 # RAG Prompt
 template = """You are an HR Assistant for Wood Group. 
@@ -55,22 +48,8 @@ def health_check():
 @app.post("/chat")
 def chat(request: ChatRequest):
     try:
-        # Stage 1: Base Retrieval (Top 15)
-        base_docs = retriever.invoke(request.question)
-        
-        # Stage 2: Re-ranking
-        if base_docs:
-            pairs = [[request.question, doc.page_content] for doc in base_docs]
-            scores = cross_encoder.predict(pairs)
-            
-            # Sort documents by their CrossEncoder score descending
-            scored_docs = list(zip(scores, base_docs))
-            scored_docs.sort(key=lambda x: x[0], reverse=True)
-            
-            # Take absolute best Top 4
-            final_docs = [doc for score, doc in scored_docs[:4]]
-        else:
-            final_docs = []
+        # Retrieve context directly from vector store
+        final_docs = retriever.invoke(request.question)
         
         if request.provider == "Groq":
             llm = ChatGroq(model="llama-3.1-8b-instant", temperature=0)

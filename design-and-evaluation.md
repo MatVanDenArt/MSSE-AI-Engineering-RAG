@@ -5,11 +5,20 @@ This project utilizes a modern **Client-Server Architecture** to separate the us
 1. **Frontend (Streamlit)**: Serves as a lightweight, interactive user interface running on port 8501. It collects user input and renders Markdown responses and source references.
 2. **Backend (FastAPI)**: Serves as a persistent REST API running on port 8000. It exposes `/chat` and `/health` endpoints. It handles the LangChain orchestration, interacts with the local Vector Database, and communicates with the SaaS LLM providers over the network.
 
-## Vector Database Strategy
-We implemented an advanced **Two-Stage Retrieval Pipeline** to maximize semantic accuracy:
+## Architecture & Design Decisions
 
-1. **Stage 1 (Broad Retrieval)**: We use **ChromaDB** as a persistent local vector store. The raw PDF documents were converted to Markdown and chunked into 500-character segments. Using the HuggingFace `all-MiniLM-L6-v2` embedding model, the database fetches the top 15 most semantically similar chunks (`k=15`) as a wide net.
-2. **Stage 2 (Deep Re-ranking)**: We implemented a HuggingFace CrossEncoder (`cross-encoder/ms-marco-MiniLM-L-6-v2`). The CrossEncoder takes the user's specific query and individually scores and re-orders all 15 retrieved documents. It filters the list down to the absolute best **Top 4**, which are then injected into the LLM context window. This guarantees only the highest-fidelity context is used.
+### 1. Vector Database & Embedding (Local)
+We use **ChromaDB** to locally store the document embeddings. It is lightweight, file-system based (no cloud DB setup required), and inherently supports LangChain.
+- **Embedding Model**: `all-MiniLM-L6-v2` (HuggingFace). This is a highly efficient, free-tier local embedding model perfectly suited for mapping text chunks to dense vectors without cloud overhead.
+
+### 2. Chunking Strategy
+We parse markdown files using a two-stage approach:
+- `MarkdownHeaderTextSplitter`: Groups context logically by headers.
+- `RecursiveCharacterTextSplitter`: Splits larger sections into manageable windows (`chunk_size=500`, `chunk_overlap=50`) to ensure high context resolution during retrieval.
+
+### 3. Retrieval Architecture
+We utilize a **Base Retrieval Pipeline**:
+- The vector store dynamically retrieves the absolute best Top 4 (`k=4`) documents based on raw cosine similarity to the user's question. This provides exactly the context the LLM needs while ensuring the backend stays within Render's strict 512MB Free Tier memory limit.
 
 ## LLM Model Choices
 The application supports routing between two primary Language Models based on availability and rate limits:
