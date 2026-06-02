@@ -8,15 +8,17 @@ st.set_page_config(page_title="HR Assistant", page_icon="📘", layout="wide")
 st.markdown("""
 <style>
     .stChatFloatingInputContainer {
-        padding-bottom: 10px;
+        padding-bottom: 40px !important;
     }
-    .stChatFloatingInputContainer::after {
-        content: "Wood Group HR Assistant can make mistakes. Verify important information with your P&O representative.";
-        display: block;
+    .disclaimer-text {
+        position: fixed;
+        bottom: 10px;
+        left: 0;
+        right: 0;
         text-align: center;
         font-size: 0.8rem;
         color: #888;
-        margin-top: 5px;
+        z-index: 999;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -107,3 +109,5 @@ if prompt_input := st.chat_input("Ask a question about HR policies..."):
             except Exception as e:
                 st.error(f"An error occurred connecting to the backend API: {e}")
 
+# Disclaimer at the bottom
+st.markdown('<div class="disclaimer-text">Wood Group HR Assistant can make mistakes. Verify important information with your P&O representative.</div>', unsafe_allow_html=True)
