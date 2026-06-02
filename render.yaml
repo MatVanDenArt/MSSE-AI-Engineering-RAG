@@ -1,0 +1,35 @@
+services:
+  # ---------------------------------------------------
+  # SERVICE 1: The FastAPI Backend
+  # ---------------------------------------------------
+  - type: web
+    name: hr-backend
+    env: docker
+    region: frankfurt
+    plan: free
+    # Render automatically maps the $PORT variable to external traffic
+    dockerCommand: "uvicorn api:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
+
+  # ---------------------------------------------------
+  # SERVICE 2: The Streamlit Frontend
+  # ---------------------------------------------------
+  - type: web
+    name: hr-frontend
+    env: docker
+    region: frankfurt
+    plan: free
+    # Start Streamlit on the dynamically assigned Render port
+    dockerCommand: "streamlit run app.py --server.port $PORT --server.address 0.0.0.0"
+    envVars:
+      # Automatically fetch the deployed public URL of the backend service
+      # and inject it into the frontend's environment!
+      - key: API_BASE_URL
+        fromService:
+          type: web
+          name: hr-backend
+          property: url

@@ -1,0 +1,7 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+Docs/
+# Note: We do NOT ignore chroma_db/ or data/ as they will be needed 
+# for the container to function if you build the image after running ingestion.

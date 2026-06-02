@@ -1,1 +1,78 @@
-# MSSE-AI-Engineering-RAG
+# Wood Group HR Assistant 📘
+
+A specialized AI-powered HR Assistant designed to answer employee questions strictly based on the Wood Group UK Leave & Absence policies. Built for the Quantic AI Engineering Project.
+
+## Architecture Overview
+- **Backend**: FastAPI (REST API framework) handling all LangChain orchestrations.
+- **Frontend**: Streamlit (lightweight UI client).
+- **Vector Database**: Local ChromaDB instance.
+- **LLM Routing**: Supports switching between Google Generative AI (Gemini) and Groq (Llama-3).
+
+---
+
+## 🚀 Setup Instructions
+
+### 1. Prerequisites
+Ensure you have Python 3.10+ installed.
+
+### 2. Environment Setup
+Create and activate a virtual environment, then install the dependencies:
+```bash
+python -m venv .venv
+.\.venv\Scripts\activate  # Windows
+pip install -r requirements.txt
+```
+
+### 3. API Keys
+Rename `.env.example` to `.env` and insert your API keys:
+```env
+GEMINI_API_KEY="your_gemini_key_here"
+GROQ_API_KEY="your_groq_key_here"
+```
+
+*Note: You can verify your API keys are working by running the diagnostic script:*
+```bash
+python scripts/diagnostics.py
+```
+
+---
+
+## 🛠️ Running the Application
+
+### 1. Ingest Data (Run Once)
+Before querying the assistant, you must populate the local Vector Database. This will read the Markdown files in `/data`, generate embeddings using HuggingFace `all-MiniLM-L6-v2`, and save them to `/chroma_db`.
+```bash
+python scripts/ingest.py
+```
+
+### 2. Start the Servers
+You can start both the FastAPI backend and Streamlit frontend simultaneously using the provided startup script:
+```powershell
+.\start.ps1
+```
+* The backend API will be available at: http://localhost:8000/docs
+* The frontend UI will be available at: http://localhost:8501
+
+---
+
+## 🧪 Testing & Evaluation
+
+### Automated CI/CD Tests
+This repository includes a `pytest` suite for automated continuous integration. You can run the tests locally:
+```bash
+python -m pytest tests/
+```
+
+### Strict Deployment Pipeline (Render)
+By default, the GitHub Action is configured to automatically trigger a deployment to Render **only if all tests pass**. To enable this:
+1. Turn off "Auto-Deploy" in your Render Dashboard settings.
+2. Copy your Render **Deploy Hook URL**.
+3. In your GitHub repository, go to **Settings > Secrets and variables > Actions** and add a new repository secret:
+   - **Name**: `RENDER_DEPLOY_HOOK_URL`
+   - **Secret**: *(Paste the copied URL here)*
+
+### Batch Evaluation
+To run the batch evaluation script over the 15 hardcoded test questions and output latency metrics to a CSV:
+```bash
+python scripts/evaluate.py
+```
