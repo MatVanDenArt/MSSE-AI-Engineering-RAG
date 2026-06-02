@@ -63,6 +63,11 @@ import os
 
 # Define the dynamic API base URL (defaults to localhost for local testing)
 API_BASE_URL = os.environ.get("API_BASE_URL", "http://127.0.0.1:8000")
+
+# Render's 'host' property drops the schema, so we must prepend https:// if missing
+if not API_BASE_URL.startswith("http"):
+    API_BASE_URL = f"https://{API_BASE_URL}"
+
 API_URL = f"{API_BASE_URL}/chat"
 
 # Handle user input
