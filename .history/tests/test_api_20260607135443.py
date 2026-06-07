@@ -9,6 +9,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 
 import api
 from langchain_core.documents import Document
+from langchain_core.messages import AIMessage
 
 client = TestClient(api.app)
 
@@ -32,21 +33,18 @@ def test_chat_endpoint_success(mocker):
     Test the /chat endpoint with mocked dependencies to ensure it returns a valid response.
     This test does NOT make real API calls to Groq/Gemini.
     """
-    # 1. Mock the entire retriever object. This is a more robust approach for complex
-    #    objects like LangChain's Runnables, as it avoids issues with patching
-    #    methods that might not be simple attributes.
+    # 1. Mock the retriever's response
     mock_docs = [Document(page_content="This is a mock policy document.", metadata={"source": "mock_policy.md"})]
-    mock_retriever = mocker.MagicMock()
-    mock_retriever.invoke.return_value = mock_docs
-    mocker.patch('api.retriever', new=mock_retriever)
+    mocker.patch.object(api.retriever, 'invoke', return_value=mock_docs)
 
-    # 2. Mock the final output of the entire RAG chain.
-    # Instead of mocking individual components (like the LLM), we will patch the
-    # 'invoke' method of the base 'RunnableSequence' class. This is a robust
-    # way to bypass the chain's internal logic and guarantee a predictable output,
-    # preventing the internal server errors caused by version incompatibilities.
+    # 2. Mock the final answer from the LLM chain
+    # We will mock the ChatGroq class to return a mock LLM object.
+    # This mock LLM's invoke method will return a mock AIMessage, which the
+    # StrOutputParser in the real chain will then convert to a string.
     mock_answer_content = "This is a mock answer based on the policy."
-    mocker.patch('langchain_core.runnables.base.RunnableSequence.invoke', return_value=mock_answer_content)
+    mock_llm = mocker.MagicMock()
+    mock_llm.invoke.return_value = AIMessage(content=mock_answer_content)
+    mocker.patch('api.ChatGroq', return_value=mock_llm)
 
     # 3. Make the request to the endpoint
     response = client.post("/chat", json={"question": "What is the policy?", "provider": "Groq"})
@@ -60,6 +58,7 @@ def test_chat_endpoint_success(mocker):
     assert response_data["sources"][0]["source"] == "mock_policy.md"
 
     # Verify that our mocks were called
-    mock_retriever.invoke.assert_called_once_with("What is the policy?")
-    # We can no longer assert that ChatGroq was called, as we are now mocking
-    # the entire chain's output directly.
+    api.retriever.invoke.assert_called_once_with("What is the policy?")
+    # We can also assert that the LLM was created and invoked
+    api.ChatGroq.assert_called_once()
+    mock_llm.invoke.assert_called_once()

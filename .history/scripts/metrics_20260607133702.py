@@ -9,7 +9,6 @@ re-run the entire evaluation process.
 """
 import csv
 import os
-import numpy as np
 
 latencies = []
 errors = 0
@@ -40,10 +39,11 @@ except FileNotFoundError:
     exit()
 
 if latencies:
-    latencies_np = np.array(latencies)
-    avg = np.mean(latencies_np)
-    p50 = np.percentile(latencies_np, 50)
-    p95 = np.percentile(latencies_np, 95)
+    latencies.sort()
+    avg = sum(latencies) / len(latencies)
+    p50 = latencies[len(latencies)//2]
+    p95_idx = int(len(latencies) * 0.95)
+    p95 = latencies[p95_idx] if p95_idx < len(latencies) else latencies[-1]
     
     print(f"Total questions: {total}")
     print(f"Avg Latency: {avg:.2f}s")

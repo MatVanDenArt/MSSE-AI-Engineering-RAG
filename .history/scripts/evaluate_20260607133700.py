@@ -35,11 +35,7 @@ def main():
         "If I am summoned to attend court for Jury Service, will my time off be paid or unpaid?",
         "My home boiler broke down and I cannot work remotely. If I take a day off to deal with this emergency, will it be paid?",
         "How many days of paid leave does the company offer for the bereavement of an immediate family member?",
-        "I am an independent contractor providing services to Wood Group in the UK. Do the company's Maternity and Paternity procedures apply to me?",
-        "If I am sick during my scheduled annual leave, can I reclaim those days as sickness absence instead?",
-        "If I am the secondary adopter, how many unpaid adoption appointments am I entitled to take time off for?",
-        "Do I still accrue my normal annual leave while I am away on Maternity Leave?",
-        "Is there a maximum limit to the number of 'keeping in touch' (KIT) days I can take during my Adoption Leave?"
+        "I am an independent contractor providing services to Wood Group in the UK. Do the company's Maternity and Paternity procedures apply to me?"
     ]
     
     results = []
@@ -87,7 +83,7 @@ def main():
         
         # Artificial sleep to avoid Groq Free Tier rate limits
         if idx < len(questions) - 1:
-            time.sleep(6)
+            time.sleep(3)
             
     import os
     ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -102,7 +98,7 @@ def main():
     # Save to Markdown
     with open(md_path, "w", encoding="utf-8") as f:
         f.write("# HR Assistant Evaluation Results\n\n")
-        f.write("This document contains the automated evaluation results of the 19 test questions.\n\n")
+        f.write("This document contains the automated evaluation results of the 15 test questions.\n\n")
         
         for idx, res in enumerate(results):
             f.write(f"### Q{idx+1}: {res['Question']}\n")

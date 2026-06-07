@@ -1,0 +1,15 @@
+langchain
+langchain-community
+chromadb
+python-dotenv
+streamlit
+langchain-groq
+langchain-google-genai
+fastapi
+uvicorn
+requests
+pydantic
+pytest
+httpx
+pandas
+numpy

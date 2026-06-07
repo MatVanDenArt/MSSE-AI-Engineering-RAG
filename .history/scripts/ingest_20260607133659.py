@@ -16,14 +16,12 @@ documents in the 'data/' directory are updated.
 import os
 import glob
 from dotenv import load_dotenv
-import time
-import random
 from langchain_community.document_loaders import TextLoader
 from langchain_text_splitters import MarkdownHeaderTextSplitter, RecursiveCharacterTextSplitter
 import requests
 from typing import List
 from langchain_core.embeddings import Embeddings
-from langchain_chroma import Chroma
+from langchain_community.vectorstores import Chroma
 
 def main():
     """
@@ -85,8 +83,6 @@ def main():
     # Initialize the custom REST embedding model
     print("Initializing custom GeminiRESTEmbeddings...")
     gemini_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
-    if not gemini_key:
-        raise ValueError("GEMINI_API_KEY or GOOGLE_API_KEY not found in environment. Please ensure it is set in your .env file.")
     embeddings = GeminiRESTEmbeddings(api_key=gemini_key)
     
     # Create and persist the Chroma vector database
@@ -124,46 +120,18 @@ class GeminiRESTEmbeddings(Embeddings):
             A list of lists of floats, where each inner list is the embedding
             for a corresponding document.
         """
+        # Gemini API supports batching up to 100 documents per request.
         batch_url = self.url.replace(":embedContent", ":batchEmbedContents")
-        all_embeddings = []
-        # The Gemini API has a limit of 100 documents per batch request.
-        batch_size = 100
-
-        for i in range(0, len(texts), batch_size):
-            batch_texts = texts[i:i + batch_size]
-            
-            print(f"    -> Embedding batch {i//batch_size + 1} of {len(texts)//batch_size + 1} (size: {len(batch_texts)})...")
-
-            requests_payload = {
-                "requests": [
-                    {"model": "models/gemini-embedding-2", "content": {"parts": [{"text": text}]}}
-                    for text in batch_texts
-                ]
-            }
-            
-            # --- Implement Exponential Backoff with Jitter ---
-            max_retries = 5
-            base_delay = 5  # Start with a 5-second delay
-            for attempt in range(max_retries):
-                try:
-                    response = requests.post(batch_url, json=requests_payload)
-                    response.raise_for_status()
-                    print("    -> Batch embedded successfully.")
-                    break  # Success
-                except requests.exceptions.HTTPError as e:
-                    if e.response.status_code == 429 and attempt < max_retries - 1:
-                        wait_time = base_delay * (2 ** attempt) + random.uniform(0, 1)
-                        print(f"    [WARNING] Rate limit hit (429). Retrying in {int(wait_time)} seconds...")
-                        time.sleep(wait_time)
-                    else:
-                        print(f"    [ERROR] A non-retriable error occurred or max retries reached: {e}")
-                        raise
-            # --- End Exponential Backoff ---
-            
-            batch_embeddings = [item["values"] for item in response.json()["embeddings"]]
-            all_embeddings.extend(batch_embeddings)
-            
-        return all_embeddings
+        
+        requests_payload = [
+            {"model": "models/gemini-embedding-2", "content": {"parts": [{"text": text}]}}
+            for text in texts
+        ]
+        
+        response = requests.post(batch_url, json={"requests": requests_payload})
+        response.raise_for_status()
+        
+        return [item["values"] for item in response.json()["embeddings"]]
 
     def embed_query(self, text: str) -> List[float]:
         """

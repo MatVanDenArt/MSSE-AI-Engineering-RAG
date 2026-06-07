@@ -37,16 +37,18 @@ def test_chat_endpoint_success(mocker):
     #    methods that might not be simple attributes.
     mock_docs = [Document(page_content="This is a mock policy document.", metadata={"source": "mock_policy.md"})]
     mock_retriever = mocker.MagicMock()
-    mock_retriever.invoke.return_value = mock_docs
+    mock_retriever.get_relevant_documents.return_value = mock_docs
     mocker.patch('api.retriever', new=mock_retriever)
 
-    # 2. Mock the final output of the entire RAG chain.
-    # Instead of mocking individual components (like the LLM), we will patch the
-    # 'invoke' method of the base 'RunnableSequence' class. This is a robust
-    # way to bypass the chain's internal logic and guarantee a predictable output,
-    # preventing the internal server errors caused by version incompatibilities.
+    # 2. Mock the final answer from the LLM chain
+    # We will mock the ChatGroq class to return a mock LLM object.
+    # This mock LLM's invoke method will return a plain string, which is a more
+    # robust way to test the chain without depending on the internal behavior
+    # of the StrOutputParser.
     mock_answer_content = "This is a mock answer based on the policy."
-    mocker.patch('langchain_core.runnables.base.RunnableSequence.invoke', return_value=mock_answer_content)
+    mock_llm = mocker.MagicMock()
+    mock_llm.invoke.return_value = mock_answer_content
+    mocker.patch('api.ChatGroq', return_value=mock_llm)
 
     # 3. Make the request to the endpoint
     response = client.post("/chat", json={"question": "What is the policy?", "provider": "Groq"})
@@ -60,6 +62,7 @@ def test_chat_endpoint_success(mocker):
     assert response_data["sources"][0]["source"] == "mock_policy.md"
 
     # Verify that our mocks were called
-    mock_retriever.invoke.assert_called_once_with("What is the policy?")
-    # We can no longer assert that ChatGroq was called, as we are now mocking
-    # the entire chain's output directly.
+    mock_retriever.get_relevant_documents.assert_called_once_with("What is the policy?")
+    # We can also assert that the LLM was created and invoked
+    api.ChatGroq.assert_called_once()
+    mock_llm.invoke.assert_called_once()

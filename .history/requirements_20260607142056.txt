@@ -1,0 +1,32 @@
+# --- Core Backend ---
+fastapi
+uvicorn[standard]
+python-dotenv
+pydantic
+
+# --- LangChain & AI ---
+langchain
+langchain-groq
+langchain-google-genai
+langchain-text-splitters 
+google-generativeai      
+
+# --- Vector Store ---
+chromadb
+langchain-chroma         # New dedicated package for ChromaDB integration
+
+# --- Frontend ---
+streamlit
+requests
+
+# --- Evaluation & Local Development ---
+# The heavy `sentence-transformers` is intentionally not used by the deployed API.
+pandas
+numpy
+langchain-huggingface
+sentence-transformers
+
+# --- Testing (Optional) ---
+pytest
+pytest-mock # For mocking dependencies in tests
+httpx       # Required by FastAPI's TestClient

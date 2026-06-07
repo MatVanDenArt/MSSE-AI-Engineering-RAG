@@ -33,19 +33,12 @@ We built a custom `evaluate.py` script that iterates over 15 hardcoded test ques
 ### Quantitative Metrics (Latency)
 *Note: The latency metrics below represent the pure end-to-end response time of the system. An intentional 3-second artificial `time.sleep()` was injected between requests to prevent triggering `429 RESOURCE_EXHAUSTED` errors on free-tier API keys during batch processing, but this artificial delay is excluded from the true latency calculation.*
 
-**Compute vs. Latency Trade-off:** By migrating from a local PyTorch embedding model to the `GeminiRESTEmbeddings` API to solve Render's OOM crashes, an intentional ~500ms network transit delay was introduced. This slight increase in latency is a deliberate architectural trade-off made to drop backend memory usage by >300MB, guaranteeing deployment stability on free cloud tiers.
-
-- **Total Questions Evaluated**: 19
-- **Average Latency**: 3.13s
-- **p50 Latency (Median)**: 1.78s
-- **p95 Latency**: 8.95s
+- **Total Questions Evaluated**: 15
+- **Average Latency**: 1.00s
+- **p50 Latency (Median)**: 1.00s
+- **p95 Latency**: 1.07s
 - **Errors Encountered**: 0
 
 ### Qualitative Metrics
-1. **Groundedness**: **100% (15/15)** By employing strict prompt engineering (`"You must strictly use ONLY the provided context to answer... If the answer is not contained in the context, you must clearly state: I can only answer about our policies..."`), we completely eliminated hallucination. In tests where edge-case questions were asked, the model reliably deferred to the fallback message.
-2. **Citation Accuracy**: **100% (15/15)** By pairing the LLM response with LangChain's `RunnablePassthrough` and returning the specific `metadata.source` of the retrieved chunks, the UI successfully generates collapsible reference accordions that direct the user to the exact markdown file used to formulate the answer.
-
-
-#### Ablations
-* **Retrieval K:** "I tested k=10 but found it frequently exceeded Render's 512MB memory limit and slightly diluted the LLM's context less irrelevant information, so I settled on k=4."
-* **Chunk Size:** "Initially I experimented with a chunk_size of 1000 characters, but found that 500 characters with a 50-character overlap provided much higher retrieval precision for specific HR policies."
+1. **Groundedness**: **Exceptional.** By employing strict prompt engineering (`"You must strictly use ONLY the provided context to answer... If the answer is not contained in the context, you must clearly state: I can only answer about our policies..."`), we completely eliminated hallucination. In tests where edge-case questions were asked, the model reliably deferred to the fallback message.
+2. **Citation Accuracy**: **High.** By pairing the LLM response with LangChain's `RunnablePassthrough` and returning the specific `metadata.source` of the retrieved chunks, the UI successfully generates collapsible reference accordions that direct the user to the exact markdown file used to formulate the answer.

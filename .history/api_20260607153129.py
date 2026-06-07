@@ -4,7 +4,6 @@ from pydantic import BaseModel
 from dotenv import load_dotenv
 
 import time
-import random
 from langchain_chroma import Chroma
 import requests
 from typing import List
@@ -49,31 +48,20 @@ class GeminiRESTEmbeddings(Embeddings):
         for i in range(0, len(texts), batch_size):
             batch_texts = texts[i:i + batch_size]
             
-            requests_payload = {
-                "requests": [
-                    {"model": "models/gemini-embedding-2", "content": {"parts": [{"text": text}]}}
-                    for text in batch_texts
-                ]
-            }
+            requests_payload = [
+                {"model": "models/gemini-embedding-2", "content": {"parts": [{"text": text}]}}
+                for text in batch_texts
+            ]
             
-            # --- Implement Exponential Backoff with Jitter ---
-            max_retries = 5
-            base_delay = 5  # Start with a 5-second delay
-            for attempt in range(max_retries):
-                try:
-                    response = requests.post(batch_url, json=requests_payload)
-                    response.raise_for_status()
-                    break  # Success
-                except requests.exceptions.HTTPError as e:
-                    if e.response.status_code == 429 and attempt < max_retries - 1:
-                        wait_time = base_delay * (2 ** attempt) + random.uniform(0, 1)
-                        time.sleep(wait_time)
-                    else:
-                        raise
-            # --- End Exponential Backoff ---
+            response = requests.post(batch_url, json={"requests": requests_payload})
+            response.raise_for_status()
             
             batch_embeddings = [item["values"] for item in response.json()["embeddings"]]
             all_embeddings.extend(batch_embeddings)
+
+            # Add a small delay to respect the API's rate limits (e.g., 60 RPM)
+            if i + batch_size < len(texts):
+                time.sleep(2)
             
         return all_embeddings
 
@@ -128,14 +116,15 @@ def health_check():
 def chat(request: ChatRequest):
     try:
         # Retrieve context directly from vector store
-        # Use the modern .invoke() method for Runnable retrievers
-        final_docs = retriever.invoke(request.question)
+        # Use get_relevant_documents for compatibility with older LangChain versions
+        # where retrievers are not yet 'Runnable' with an .invoke() method.
+        final_docs = retriever.get_relevant_documents(request.question)
         
         # ==============================================================================
         # OPTIONAL: Two-Stage Retrieval Logic (Uncomment for larger hosts)
         # Note: If uncommented, remember to change the retriever `k` value above to 15!
         #
-        # base_docs = retriever.invoke(request.question)
+        # base_docs = retriever.get_relevant_documents(request.question)
         # if base_docs:
         #     pairs = [[request.question, doc.page_content] for doc in base_docs]
         #     scores = cross_encoder.predict(pairs)

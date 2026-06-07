@@ -76,6 +76,18 @@ if not API_BASE_URL.startswith("http"):
 
 API_URL = f"{API_BASE_URL}/chat"
 
+# --- Cold Start Mitigation ---
+@st.cache_data(ttl=600)
+def wake_backend():
+    try:
+        requests.get(f"{API_BASE_URL}/health", timeout=5)
+    except:
+        pass
+
+# Fire a silent ping when the app loads to wake up the backend early
+wake_backend()
+# -----------------------------
+
 # Handle user input
 if prompt_input := st.chat_input("Ask a question about HR policies..."):
     # Add user message to state
@@ -108,8 +120,22 @@ if prompt_input := st.chat_input("Ask a question about HR policies..."):
                             st.markdown("---")
                 
                 st.session_state.messages.append({"role": "assistant", "content": answer, "sources": sources})
+            except requests.exceptions.HTTPError as e:
+                # If it's a 502, 503, or 504, it's a Render Cold Start or Gateway timeout
+                if e.response.status_code in [502, 503, 504]:
+                    st.warning("⏳ The backend AI server is currently waking up from sleep mode (this takes about 50 seconds on the free tier). Please wait a moment and submit your question again!")
+                else:
+                    # It's a real API error (e.g. 500 Internal Server Error)
+                    try:
+                        error_detail = e.response.json().get("detail", str(e))
+                    except:
+                        error_detail = str(e)
+                    st.error(f"Backend API Error: {error_detail}")
+            except requests.exceptions.RequestException as e:
+                # This catches generic network errors (like DNS failures or connection timeouts)
+                st.warning("⏳ The backend AI server is currently waking up from sleep mode. Please wait a moment and try again!")
             except Exception as e:
-                st.error(f"An error occurred connecting to the backend API: {e}")
+                st.error(f"An unexpected error occurred: {e}")
 
 # Disclaimer at the bottom
 st.markdown('<div class="disclaimer-text">Wood Group HR Assistant can make mistakes. Verify important information with your P&O representative.</div>', unsafe_allow_html=True)

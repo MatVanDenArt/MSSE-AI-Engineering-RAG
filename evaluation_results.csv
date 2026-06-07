@@ -1,73 +1,74 @@
 Question,LLM Answer,Retrieved Context,Latency
-"If I am absent from work due to sickness for 9 calendar days, what specific documentation must I provide to the Company?","For periods of sickness absence of more than seven calendar days, you should provide the Company with a Statement of Fitness for Work (Fit Note) from a GP, nurse, occupational therapist, pharmacist, or physiotherapist.","On the first day of sickness absence, the employee must inform the Company as soon as reasonably practicable that they will not be working because of illness or injury.  
-Preferably, the employee should notify the Company of their non-attendance by a form of business communication (i.e., telephone/Teams/email). Refer to sections 2.1.1 and 2.1.2 for further details.
+"If I am absent from work due to sickness for 9 calendar days, what specific documentation must I provide to the Company?","* A Statement of Fitness for Work (Fit Note) from a GP, nurse, occupational therapist, pharmacist, or physiotherapist.","For absences of less than seven calendar days (including part days of absence) the employee must complete a UK - Leave of Absence Form on their return to work and return to their manager or HR as soon as possible.  
+For periods of sickness absence of more than seven calendar days, the employee should provide the Company with a Statement of Fitness for Work (Fit Note) from a GP, nurse, occupational therapist, pharmacist, or physiotherapist.
 
 For absences of less than seven calendar days (including part days of absence) the employee must complete a UK - Leave of Absence Form on their return to work and return to their manager or HR as soon as possible.  
 For periods of sickness absence of more than seven calendar days, the employee should provide the Company with a Statement of Fitness for Work (Fit Note) from a GP, nurse, occupational therapist, pharmacist, or physiotherapist.
 
-By implementing this procedure, the Company aims to strike a reasonable balance between the pursuit of its operational needs and the genuine need of employees to take time off work because of ill health.  
-This procedure outlines the approach that will be taken to manage sickness absence effectively, fairly, and consistently and the support which is available to employees during periods of sickness absence and ill health.
+The Company may require employees to undergo an occupational health assessment and for the employee's fitness to return to work to be confirmed by an occupational health provider prior to their return to work.  
+Failure to provide the required medical certification may result in the employee's absence being deemed as unauthorised (see section 2.3).
 
-Managers and HR will regularly review sickness absence levels and will take appropriate action where necessary.  
-As a general guide, where an employee's absence record shows a frequency of four separate absences over a twelve-month rolling period, the employee will be invited to attend a sickness absence meeting with their manager and HR to discuss their absence record and any mitigating circumstances that may exist.",1.0650229454040527
+The Company may require employees to undergo an occupational health assessment and for the employee's fitness to return to work to be confirmed by an occupational health provider prior to their return to work.  
+Failure to provide the required medical certification may result in the employee's absence being deemed as unauthorised (see section 2.3).",1.7569994926452637
 I work offshore. What exact phone number and option should I call to report a sickness absence?,"* Phone number: 01224 851500
 * Option: Option 1","#### 2.1.2 Offshore Based Employees  
 Offshore based employees should report their absence to the Absence team by calling 01224 851500 (Option 1) at the earliest opportunity. Sickness during field break should also be reported as there may be a requirement for the employee to attend an occupational health assessment prior to their next mobilisation to ensure fitness to work.
 
-On the first day of sickness absence, the employee must inform the Company as soon as reasonably practicable that they will not be working because of illness or injury.  
-Preferably, the employee should notify the Company of their non-attendance by a form of business communication (i.e., telephone/Teams/email). Refer to sections 2.1.1 and 2.1.2 for further details.
+#### 2.1.2 Offshore Based Employees  
+Offshore based employees should report their absence to the Absence team by calling 01224 851500 (Option 1) at the earliest opportunity. Sickness during field break should also be reported as there may be a requirement for the employee to attend an occupational health assessment prior to their next mobilisation to ensure fitness to work.
 
-Notification of sickness absence must be via a form of business communication (i.e., telephone/Teams/email) rather than text message or social media. In exceptional circumstances, where the employee is unable to make a telephone/Teams call or email, another person such as a friend or relative can contact the Company on their behalf.
+#### 2.1.1 Onshore Based Employees  
+Onshore (office based and site based) employees should notify their manager of their non-attendance before they are due to start work and no later than one hour after they are due to begin work. If the employee's manager is unavailable, the employee should contact the next most appropriate person within the department/team.
 
-Onshore based employees should send Fit Notes to HR. Offshore based employees should send Fit Notes to the Absence Team at health.surveillance@woodgroup.com.  
-Further medical certification must be sent to HR on the expiry of the previous one and continue to be provided for the whole period of sickness absence.  
-Employees must not return to work before the date indicated on their last medical certificate unless they have separate written consent to return and the Company agrees to this.",1.0226666927337646
-"If I resign and leave the company exactly 8 months after returning from Maternity Leave, what percentage of my Company Maternity Pay (CMP) am I required to repay?",You are required to repay 50% of your Company Maternity Pay (CMP) (less any Statutory Maternity Pay (SMP) paid) since you left the company between 6 and 12 months after returning to work.,"* half basic salary for the subsequent 13 weeks of maternity leave; and
-* the SMP rate will be paid during the subsequent 13 weeks of maternity leave. CMP includes any entitlement to SMP.  
-Payment of CMP is made on the usual pay date and is subject to tax and NI deductions.  
-##### 2.7.1.3 Repayment of CMP  
-An employee will have no further entitlement to CMP and will be required to repay any received CMP (less any SMP paid) as set out below:
+#### 2.1.1 Onshore Based Employees  
+Onshore (office based and site based) employees should notify their manager of their non-attendance before they are due to start work and no later than one hour after they are due to begin work. If the employee's manager is unavailable, the employee should contact the next most appropriate person within the department/team.",1.60829758644104
+"If I resign and leave the company exactly 8 months after returning from Maternity Leave, what percentage of my Company Maternity Pay (CMP) am I required to repay?","Based on the provided context, since you resigned exactly 8 months after returning from Maternity Leave, you fall into the repayment term of ""Between 6 and 12 months"". 
 
-To be eligible for CMP, an employee is required to have at least 52 weeks' continuous employment with the Company by the end of the QW and remain in continuous employment with the Company until the week before commencing maternity leave.  
-Any CMP due during maternity leave will be paid as follows using average earnings calculated over the calculation period:  
-* full basic salary during the first 13 weeks of maternity leave;
+You will be required to repay 50% of the CMP paid to you (less any SMP paid).","*If the employee advises the Company that they will not be returning to work, or if they do not exercise their right to return to work following OML or AML, the employee will be required to repay 100% CMP paid to them (less any SMP paid).
+
+*If the employee advises the Company that they will not be returning to work, or if they do not exercise their right to return to work following OML or AML, the employee will be required to repay 100% CMP paid to them (less any SMP paid).
 
 * If the employee gives, or is given, notice of termination of employment (unless termination is by reason of redundancy or ill health), they will have no further entitlement to CMP and will be required to repay the amounts as set out below within 12 months of returning to work.  
 **Repayment Terms based on Timescale:**  
 *   **Within 6 months:** 100% CMP paid to employee (less any SMP paid).
 *   **Between 6 and 12 months:** 50% CMP paid to employee (less any SMP paid).
 
-##### 2.7.1.4 Maternity Allowance  
-If an employee is not entitled to SMP or CMP, they may be eligible for Maternity Allowance from their local Social Security or Job Centre Plus office.  
-#### 2.7.2 Annual Leave  
-During maternity leave, annual leave will continue to accrue at the rate provided in the employee's terms and conditions of employment. Employees are to discuss their intentions regarding taking annual leave with their manager.",1.0224032402038574
-Am I allowed to use any of my 'keeping in touch' (KIT) days during the two-week compulsory maternity leave period immediately after birth?,"* No, you are not allowed to use any of your 'keeping in touch' (KIT) days during the two-week compulsory maternity leave period immediately after birth.
-* Employees must not work at all during the compulsory maternity leave period.","An employee can agree to work for the Company or to attend training for up to ten days during maternity leave without that work bringing the maternity leave period to an end. These days are known as 'keeping in touch' (KIT) days.
+* If the employee gives, or is given, notice of termination of employment (unless termination is by reason of redundancy or ill health), they will have no further entitlement to CMP and will be required to repay the amounts as set out below within 12 months of returning to work.  
+**Repayment Terms based on Timescale:**  
+*   **Within 6 months:** 100% CMP paid to employee (less any SMP paid).
+*   **Between 6 and 12 months:** 50% CMP paid to employee (less any SMP paid).",1.6060757637023926
+Am I allowed to use any of my 'keeping in touch' (KIT) days during the two-week compulsory maternity leave period immediately after birth?,"No, you are not allowed to use any of your 'keeping in touch' (KIT) days during the two-week compulsory maternity leave period immediately after birth. 
 
-An employee can agree to work for the Company or to attend training for up to 20 days during shared parental leave without that work bringing the period of their shared parental leave to an end. These days, which are known as 'shared parental leave in touch' (SPLIT) days, are in addition to the ten 'keeping in touch' (KIT) days available to employees during maternity or adoption leave.
+According to the provided context, employees must not work at all during the compulsory maternity leave period.","KIT days are optional and by agreement between the employee and the Company. The Company has no right to require the employee to carry out any work, and the employee has no right to undertake any work during their maternity leave. Employees must not work at all during the compulsory maternity leave period.
 
 KIT days are optional and by agreement between the employee and the Company. The Company has no right to require the employee to carry out any work, and the employee has no right to undertake any work during their maternity leave. Employees must not work at all during the compulsory maternity leave period.
 
-If the baby is born before the intended maternity leave start date, the maternity leave period will start the day after the date of childbirth. To preserve employee rights whilst on maternity leave, the employee must advise their manager and HR,in writing,and as soon as is reasonably practicalof the dateof childbirthand, ifnot already provided, their MAT B1 form. The Company will write to the employee within 28 days of receiving notification from the employee.",0.9925673007965088
-What is the absolute maximum timeframe I have to complete my Paternity Leave after my child is born?,You have 52 weeks to complete your paternity leave after your child is born.,"-   Where an employee has not already taken any shared parental leave in respect of the child.  
-**To qualify for paternity leave the employee must:**  
--   Have worked continuously for the Company for 26 weeks by the end of the Qualifying Week (QW) or by the end of the week in which an approved match with the child is made for adoption purposes; and  
--   Be taking the leave to care for a child or to support the child's other parent in caring for the child.
+An employee can agree to work for the Company or to attend training for up to ten days during maternity leave without that work bringing the maternity leave period to an end. These days are known as 'keeping in touch' (KIT) days.
 
-The mother's partner can begin a period of shared parental leave at any time from the date of the child's birth. However, the partner should bear in mind that they will lose any entitlement to take up to two weeks' paternity leave following the birth of their child if shared parental leave is taken first. The mother and partner must take any shared parental leave within 52 weeks of birth.  
-#### 2.2.2 Adoptions
+An employee can agree to work for the Company or to attend training for up to ten days during maternity leave without that work bringing the maternity leave period to an end. These days are known as 'keeping in touch' (KIT) days.",2.496500015258789
+What is the absolute maximum timeframe I have to complete my Paternity Leave after my child is born?,I can only answer about our policies based on the provided documents. I do not have information on that.,"Employees who qualify for paternity leave will be entitled to take either one week's paternity leave or two weeks' paternity leave, which can either be taken as one consecutive period or two non-consecutive periods of leave. Paternity leave cannot be taken as odd days.  
+**Paternity leave can start:**  
+-   From the date of the child's birth, or in the case of adoption, the date of the child's placement with the employee and/or their partner; or
 
 Employees who qualify for paternity leave will be entitled to take either one week's paternity leave or two weeks' paternity leave, which can either be taken as one consecutive period or two non-consecutive periods of leave. Paternity leave cannot be taken as odd days.  
 **Paternity leave can start:**  
 -   From the date of the child's birth, or in the case of adoption, the date of the child's placement with the employee and/or their partner; or
 
-However, employees should bear in mind that the adopter's partner will lose any entitlement to take up to two weeks' paternity leave following the adoption of their child if shared parental leave is taken first. The employee must take any shared parental leave within 52 weeks of the date on which the child is placed for adoption (for adoptions from overseas, within 52 weeks of the date on which the child enters Great Britain).",0.9832789897918701
-"If my adoption placement is unfortunately disrupted and the child is returned to the agency, how many weeks will my adoption leave and pay continue?",* Your adoption leave and pay will continue for a further eight weeks from the end of the week in which disruption occurred.,"* If the child passes away.  
-In case of disruption, the employee's entitlement to adoption leave and pay will continue for a further eight weeks from the end of the week in which disruption occurred, unless their entitlement to leave or pay would have ended earlier in the normal course of events.
+An employee must now notify the Company in writing of both their entitlement and intention to take Paternity leave.  
+**The employee must advise the company of their entitlement to take paternity leave:**  
+-   By the end of the QW; or  
+-   In the case of adoption within the UK within seven days after the employee and/or their partner has been notified of being matched for adoption with a child; or
 
-*   after the compulsory maternity leave period, which is the two weeks after birth, or two weeks after the first day of the adopter's ordinary adoption leave period; and  
-*   at least eight weeks after the date on which the mother/adopter gave the maternity/adoption leave curtailment notice to the Company; and  
-*   at least one week before what would be the end of the additional maternity/adoption leave period.
+An employee must now notify the Company in writing of both their entitlement and intention to take Paternity leave.  
+**The employee must advise the company of their entitlement to take paternity leave:**  
+-   By the end of the QW; or  
+-   In the case of adoption within the UK within seven days after the employee and/or their partner has been notified of being matched for adoption with a child; or",1.5303726196289062
+"If my adoption placement is unfortunately disrupted and the child is returned to the agency, how many weeks will my adoption leave and pay continue?","* Your adoption leave and pay will continue for a further eight weeks from the end of the week in which disruption occurred.
+* This is unless your entitlement to leave or pay would have ended earlier in the normal course of events.","Adoption leave is disrupted if it has started but:  
+* The employee is notified that the placement will not take place; or  
+* The child is returned to the adoption agency after placement; or  
+* The employee failed to apply for a parental order or the application for a parental order was not granted and any time limit for appeal or further application has passed; or  
+* If the child passes away.
 
 Adoption leave is disrupted if it has started but:  
 * The employee is notified that the placement will not take place; or  
@@ -75,93 +76,137 @@ Adoption leave is disrupted if it has started but:
 * The employee failed to apply for a parental order or the application for a parental order was not granted and any time limit for appeal or further application has passed; or  
 * If the child passes away.
 
-Eligible employees are entitled to take up to 52 weeks' adoption leave. Adoption leave is a single continuous period and is made up of 26 weeks' Ordinary Adoption Leave (OAL) and 26 weeks' Additional Adoption Leave (AAL). AAL immediately follows OAL and there must be no gap between the two.  
-Only one period of leave is available irrespective of whether more than one child is placed for adoption as part of the same arrangement.",0.9738070964813232
-"If I am designated as the 'main adopter', what is the maximum number of paid adoption appointments I am entitled to take time off for?","* As the 'main adopter', you are entitled to take paid time off to attend up to **five** adoption appointments.","The main adopter will be entitled to paid time off during working hours to attend up to five adoption appointments for the purposes of enabling the employee and their partner to have contact with the child prior to placement, and for any other purpose connected with the adoption for example, to meet with the professionals involved in the care of the child. The secondary adopter will be entitled to take reasonable unpaid time off to attend up to two adoption appointments.
+* If the child passes away.  
+In case of disruption, the employee's entitlement to adoption leave and pay will continue for a further eight weeks from the end of the week in which disruption occurred, unless their entitlement to leave or pay would have ended earlier in the normal course of events.
 
-To be eligible to take this time off, the employee could be married to or be the civil partner of the pregnant woman, living with the pregnant woman in an enduring family relationship or the biological father of the expected child. In the case of adoptive parents, the secondary adopter will be entitled to take reasonable unpaid time off for up to two adoption appointments. In the case of surrogacy arrangements, reasonable unpaid time off to attend up to two antenatal appointments is provided
+* If the child passes away.  
+In case of disruption, the employee's entitlement to adoption leave and pay will continue for a further eight weeks from the end of the week in which disruption occurred, unless their entitlement to leave or pay would have ended earlier in the normal course of events.",1.9732534885406494
+"If I am designated as the 'main adopter', what is the maximum number of paid adoption appointments I am entitled to take time off for?","* As the 'main adopter', you are entitled to take paid time off during working hours to attend up to **five** adoption appointments.","The main adopter will be entitled to paid time off during working hours to attend up to five adoption appointments for the purposes of enabling the employee and their partner to have contact with the child prior to placement, and for any other purpose connected with the adoption for example, to meet with the professionals involved in the care of the child. The secondary adopter will be entitled to take reasonable unpaid time off to attend up to two adoption appointments.
 
-Where the agency is placing more than one child as part of the same arrangement, this is treated as one adoption and will not increase the number of appointments the employee can take time off to attend.
+The main adopter will be entitled to paid time off during working hours to attend up to five adoption appointments for the purposes of enabling the employee and their partner to have contact with the child prior to placement, and for any other purpose connected with the adoption for example, to meet with the professionals involved in the care of the child. The secondary adopter will be entitled to take reasonable unpaid time off to attend up to two adoption appointments.
 
-Appointments must have been arranged by or at the request of the adoption agency and time off must be taken before the date of the child's placement for adoption. Employees are to give their manager as much notice as possible prior to appointments and may be asked to show their appointment card, or other documentation provided by the adoption agency.",0.9113149642944336
-"If my partner takes exactly 6 weeks of maternity leave, how many weeks of Shared Parental Leave (SPL) are left for us to share?","*   If your partner takes exactly 6 weeks of maternity leave, there are up to **46 weeks** of Shared Parental Leave (SPL) available for you to share.","The amount of Shared Parental Leave (SPL) available depends on when maternity leave ends (based on a 52-week total period):  
+Where the employee is adopting a child with their spouse or partner, they must decide who will be treated as the main adopter and who will be treated as the secondary adopter for the purposes of time off. The employee must notify the Company of their decision the first time they request time off for an adoption appointment. Where an employee is adopting a child alone, they will be treated as the primary adopter.
+
+Where the employee is adopting a child with their spouse or partner, they must decide who will be treated as the main adopter and who will be treated as the secondary adopter for the purposes of time off. The employee must notify the Company of their decision the first time they request time off for an adoption appointment. Where an employee is adopting a child alone, they will be treated as the primary adopter.",1.6869773864746094
+"If my partner takes exactly 6 weeks of maternity leave, how many weeks of Shared Parental Leave (SPL) are left for us to share?","Based on the provided context, if your partner takes exactly 6 weeks of maternity leave, there are up to **46 weeks** of Shared Parental Leave (SPL) available for you to share.","The amount of Shared Parental Leave (SPL) available depends on when maternity leave ends (based on a 52-week total period):  
 *   **Example 1:** If maternity leave ends after **6 weeks**, there are up to **46 weeks** of SPL available.  
 *   **Example 2:** If maternity leave ends after **26 weeks**, there are up to **26 weeks** of SPL available.  
 *   **Example 3:** If maternity leave ends after **39 weeks**, there are up to **13 weeks** of SPL available.
-
-#### 2.2.1 Births  
-The first two weeks following birth are the compulsory maternity leave period and are reserved for the mother. This means that the mother cannot curtail their maternity leave to take shared parental leave until two weeks after the birth and the maximum period that the parents could take as shared parental leave is 50 weeks between them.
-
-*   Parent 1 takes 6 weeks of maternity leave (inclusive of the two-week compulsory maternity leave period) which will be payable in line with the Company procedure of Parent 1's employer. This leaves 46 weeks of shared parental leave and 33 weeks of SSHPP for the parents to share between them.
-
-In the case of births, a total of 39 weeks' Statutory Maternity Pay (SMP) or maternity allowance is available to the mother. As there is a compulsory maternity leave period of two weeks, this means that a mother who ends their maternity leave at the earliest opportunity could share up to 37 weeks' SShPP with their partner.",1.0009219646453857
-How many 'shared parental leave in touch' (SPLIT) days can I agree to work without bringing my shared parental leave to an end?,You can agree to work for up to 20 'shared parental leave in touch' (SPLIT) days during shared parental leave without bringing the period of your shared parental leave to an end.,"An employee can agree to work for the Company or to attend training for up to 20 days during shared parental leave without that work bringing the period of their shared parental leave to an end. These days, which are known as 'shared parental leave in touch' (SPLIT) days, are in addition to the ten 'keeping in touch' (KIT) days available to employees during maternity or adoption leave.
-
-Shared parental leave must be taken in blocks of at least one week. Employees can request to take shared parental leave in one continuous block (in which case the Company is required to accept the request as long as the employee meets the eligibility and notice requirements), or in discontinuous blocks of leave (in which case the employee needs the Company's agreement). Please refer to section 3.5.1 for more information.
-
-SPLIT days are optional and by agreement between the employee and the Company. The Company has no right to require employees to carry out any work, and employees have no right to undertake any work during their shared parental leave.
-
-For employees to be eligible to take shared parental leave, both parents must meet certain eligibility requirements.  
-#### 2.1.1 Births  
-**The mother is eligible for shared parental leave if they:**  
-1.  have at least 26 weeks' continuous employment with the Company by the end of the Qualifying Week (QW) and remain in continuous employment with the Company in the week before the leave is to be taken; and",0.9786794185638428
-What is the maximum number of weeks of unpaid Ordinary Parental Leave I can take for a single child within one calendar year?,*   The maximum number of weeks of unpaid Ordinary Parental Leave you can take for a single child within one calendar year is **four weeks**.,"Eligible employees can take up to eighteen weeks' unpaid leave for each child, subject to a maximum of four weeks' leave for each child in any calendar year.
-
-Ordinary parental leave is usually taken in blocks of one week, but employees may be able to take the leave as single days. For part-time employees, a 'week' equals the number of days the employee works in a normal week. Where the employee's child has a disability (as defined in Section 4 of this Policy), the employee can take the leave one day at a time.
 
 The amount of Shared Parental Leave (SPL) available depends on when maternity leave ends (based on a 52-week total period):  
 *   **Example 1:** If maternity leave ends after **6 weeks**, there are up to **46 weeks** of SPL available.  
 *   **Example 2:** If maternity leave ends after **26 weeks**, there are up to **26 weeks** of SPL available.  
 *   **Example 3:** If maternity leave ends after **39 weeks**, there are up to **13 weeks** of SPL available.
 
-For employees to be eligible to take shared parental leave, both parents must meet certain eligibility requirements.  
-#### 2.1.1 Births  
-**The mother is eligible for shared parental leave if they:**  
-1.  have at least 26 weeks' continuous employment with the Company by the end of the Qualifying Week (QW) and remain in continuous employment with the Company in the week before the leave is to be taken; and",1.0899648666381836
-Can the company legally postpone my requested Ordinary Parental Leave if I ask for it to start on the exact day my child is born?,"No, the company will not postpone an employee's period of ordinary parental leave if the leave starts on the birth of their child or child's placement for adoption.","However, the Company will not postpone an employee's period of ordinary parental leave if the leave starts on the birth of their child or child's placement for adoption.
+In the case of births, a total of 39 weeks' Statutory Maternity Pay (SMP) or maternity allowance is available to the mother. As there is a compulsory maternity leave period of two weeks, this means that a mother who ends their maternity leave at the earliest opportunity could share up to 37 weeks' SShPP with their partner.
 
-While the Company's aim is to agree to an employee's request for ordinary parental leave, there are circumstances in which the Company may need to postpone the start date. The Company will do this only if the employee's absence would cause undue disruption to the business and will give the employee written notice of the postponement no more than seven days after receiving their request. Examples of this may be where the employee wishes to take ordinary parental leave during a business-critical
+In the case of births, a total of 39 weeks' Statutory Maternity Pay (SMP) or maternity allowance is available to the mother. As there is a compulsory maternity leave period of two weeks, this means that a mother who ends their maternity leave at the earliest opportunity could share up to 37 weeks' SShPP with their partner.",1.7144784927368164
+How many 'shared parental leave in touch' (SPLIT) days can I agree to work without bringing my shared parental leave to an end?,* You can agree to work for up to 20 SPLIT days during shared parental leave without bringing the period of your shared parental leave to an end.,"An employee can agree to work for the Company or to attend training for up to 20 days during shared parental leave without that work bringing the period of their shared parental leave to an end. These days, which are known as 'shared parental leave in touch' (SPLIT) days, are in addition to the ten 'keeping in touch' (KIT) days available to employees during maternity or adoption leave.
+
+An employee can agree to work for the Company or to attend training for up to 20 days during shared parental leave without that work bringing the period of their shared parental leave to an end. These days, which are known as 'shared parental leave in touch' (SPLIT) days, are in addition to the ten 'keeping in touch' (KIT) days available to employees during maternity or adoption leave.
+
+SPLIT days are optional and by agreement between the employee and the Company. The Company has no right to require employees to carry out any work, and employees have no right to undertake any work during their shared parental leave.
+
+SPLIT days are optional and by agreement between the employee and the Company. The Company has no right to require employees to carry out any work, and employees have no right to undertake any work during their shared parental leave.",1.9648234844207764
+What is the maximum number of weeks of unpaid Ordinary Parental Leave I can take for a single child within one calendar year?,* The maximum number of weeks of unpaid Ordinary Parental Leave you can take for a single child within one calendar year is **4 weeks**.,"Eligible employees can take up to eighteen weeks' unpaid leave for each child, subject to a maximum of four weeks' leave for each child in any calendar year.
+
+Eligible employees can take up to eighteen weeks' unpaid leave for each child, subject to a maximum of four weeks' leave for each child in any calendar year.
+
+Ordinary parental leave is usually taken in blocks of one week, but employees may be able to take the leave as single days. For part-time employees, a 'week' equals the number of days the employee works in a normal week. Where the employee's child has a disability (as defined in Section 4 of this Policy), the employee can take the leave one day at a time.
+
+Ordinary parental leave is usually taken in blocks of one week, but employees may be able to take the leave as single days. For part-time employees, a 'week' equals the number of days the employee works in a normal week. Where the employee's child has a disability (as defined in Section 4 of this Policy), the employee can take the leave one day at a time.",1.8315341472625732
+Can the company legally postpone my requested Ordinary Parental Leave if I ask for it to start on the exact day my child is born?,"No, the company will not postpone an employee's period of ordinary parental leave if the leave starts on the birth of their child. 
+
+* According to the provided documents, the company will not postpone the leave in this case.
+* The company's policy is to allow employees to take ordinary parental leave once their baby is born or adoption placement starts before taking paternity leave.","Employees can take ordinary parental leave once their baby is born or adoption placement starts before taking paternity leave.
 
 Employees can take ordinary parental leave once their baby is born or adoption placement starts before taking paternity leave.
 
-Where there may be a need to postpone an employee's requested period of ordinary parental leave, the employee will be invited to a meeting with their manager and P&O to discuss alternative dates for them to take that period of leave within six months of the first day the postponed leave was due to start, ensuring that the alternative dates are before the child's 18th birthday.",0.9575366973876953
-"If I am summoned to attend court for Jury Service, will my time off be paid or unpaid?","* Your time off for Jury Service will be paid.
-* You are required to advise your manager of the request as soon as reasonably practicable.
-* If your services are not required for any part or whole court day, you will be expected to return to work for the remainder of the working day.","The Company will grant a paid leave of absence to employees who are called for Jury Service or summoned to appeal as a witness at Court or a Tribunal Hearing. Employees are to advise their manager of such requests as soon reasonably practicable. If the employee's services are not required for any part or whole court day, they will be expected to return to work for the remainder of the working day.
+However, the Company will not postpone an employee's period of ordinary parental leave if the leave starts on the birth of their child or child's placement for adoption.
 
-Employees are required, wherever possible, to make up any time lost, to take annual leave to cover the appointment or to use time off in lieu (TOIL) in line with the UK Flexible Working (Hours) Policy if eligible. If an employee does not make up any time lost, the time off for attendance at the appointment may at the Company's discretion be unpaid.
+However, the Company will not postpone an employee's period of ordinary parental leave if the leave starts on the birth of their child or child's placement for adoption.",1.7269008159637451
+"If I am summoned to attend court for Jury Service, will my time off be paid or unpaid?",* Your time off for Jury Service will be paid.,"The Company will grant a paid leave of absence to employees who are called for Jury Service or summoned to appeal as a witness at Court or a Tribunal Hearing. Employees are to advise their manager of such requests as soon reasonably practicable. If the employee's services are not required for any part or whole court day, they will be expected to return to work for the remainder of the working day.
 
-Employees are entitled to reasonable unpaid time off during working hours for the purposes of accompanying a pregnant woman, with whom they are having a child, to up to two antenatal appointments.
+The Company will grant a paid leave of absence to employees who are called for Jury Service or summoned to appeal as a witness at Court or a Tribunal Hearing. Employees are to advise their manager of such requests as soon reasonably practicable. If the employee's services are not required for any part or whole court day, they will be expected to return to work for the remainder of the working day.
 
-Employees are entitled to reasonable paid time off during working hours to attend antenatal appointments. This may include relaxation or parent craft classes that their doctor, midwife or nurse has advised them to attend, in addition to medical examinations, screening tests and any midwife appointments.  
-Employees are to give their manager as much notice as possible prior to appointments and may be asked to provide proof of their appointment booking.",1.0028088092803955
-"My home boiler broke down and I cannot work remotely. If I take a day off to deal with this emergency, will it be paid?","No, if you take a day off to deal with an unexpected domestic emergency like a boiler breaking down and cannot work from home remotely, the leave granted will usually be unpaid.","#### 2.1.3 Other Leave  
+Employees are to advise their manager of their involvement in civic duties and request absence to carry out these duties in advance of the time off or as soon as is reasonably practicable. Each request for time off will be considered on its merits taking account of all the circumstances, including how much time is reasonably required for the activity, how much time an employee has already taken, and how the absence will affect the business.
+
+Employees are to advise their manager of their involvement in civic duties and request absence to carry out these duties in advance of the time off or as soon as is reasonably practicable. Each request for time off will be considered on its merits taking account of all the circumstances, including how much time is reasonably required for the activity, how much time an employee has already taken, and how the absence will affect the business.",1.6739647388458252
+"My home boiler broke down and I cannot work remotely. If I take a day off to deal with this emergency, will it be paid?","* According to our policy, if you require time off work to deal with an unexpected domestic emergency and cannot work from home remotely, any leave granted will usually be unpaid.
+* However, if you take a day off to deal with your broken boiler, you may be eligible for up to 5 days of paid compassionate leave if the situation involves an immediate family member or dependant.","#### 2.1.3 Other Leave  
+If an employee requires time off work to deal with an unexcepted domestic emergency and cannot work from home remotely (e.g. a boiler breaking down), any leave granted will usually be unpaid. In exceptional circumstances, the Company may refuse a request for other leave and in such circumstances will give the employee a written explanation of the reason(s) for such refusal.
+
+#### 2.1.3 Other Leave  
 If an employee requires time off work to deal with an unexcepted domestic emergency and cannot work from home remotely (e.g. a boiler breaking down), any leave granted will usually be unpaid. In exceptional circumstances, the Company may refuse a request for other leave and in such circumstances will give the employee a written explanation of the reason(s) for such refusal.
 
 The Company will sympathetically consider requests for leave to deal with emergency situations involving the injury or serious illness of an immediate family member or dependant. In these circumstances the Company offers up to a maximum of five days paid compassionate leave to deal with each emergency at manager's discretion.
 
-If an employee has exhausted any entitlement to CSP, they will be paid for the hours that they are at work only, and Statutory Sick Pay (SSP), where applicable, until they return to their normal working hours, at which point salary will be reinstated.  
-#### 2.6.2 Reasonable Adjustments
+The Company will sympathetically consider requests for leave to deal with emergency situations involving the injury or serious illness of an immediate family member or dependant. In these circumstances the Company offers up to a maximum of five days paid compassionate leave to deal with each emergency at manager's discretion.",4.524986743927002
+How many days of paid leave does the company offer for the bereavement of an immediate family member?,"* The company offers up to a maximum of 5 days paid leave per bereavement for an immediate family member.
+* The employee should contact their manager as soon as practically possible to make them aware of the bereavement.","The Company will sympathetically consider requests for leave to deal with emergency situations involving the injury or serious illness of an immediate family member or dependant. In these circumstances the Company offers up to a maximum of five days paid compassionate leave to deal with each emergency at manager's discretion.
 
-If an employee has not exhausted any entitlement to Company Sick Pay (CSP), they will be paid salary for the time they are at work and CSP for the remainder of the period of absence until either they return to their normal working hours, or their entitlement to CSP is exhausted, whichever comes first.",1.0195679664611816
-How many days of paid leave does the company offer for the bereavement of an immediate family member?,"* Up to a maximum of five days paid leave per bereavement for immediate family members.
-* Parents, including adoptive parents, foster carers, guardians and kinship carers, are entitled to two weeks paid parental bereavement leave following the loss of a child under the age of 18, or a stillbirth after 24 weeks of pregnancy.","Time off for dependants would not cover a situation that an employee knows about in advance, for example taking a child to a hospital appointment.  
+The Company will sympathetically consider requests for leave to deal with emergency situations involving the injury or serious illness of an immediate family member or dependant. In these circumstances the Company offers up to a maximum of five days paid compassionate leave to deal with each emergency at manager's discretion.
+
+Time off for dependants would not cover a situation that an employee knows about in advance, for example taking a child to a hospital appointment.  
 #### 2.1.2 Bereavement/Parental Bereavement Leave  
 The Company offers up to a maximum of five days paid leave per bereavement to employees who experience bereavement in their immediate family or someone of similarly close connections. An employee should contact their manager as soon as practically possible to make them aware.
 
-Parents, including adoptive parents, foster carers, guardians and kinship carers are entitled to two weeks paid parental bereavement leave following the loss of a child under the age of 18, or a stillbirth after 24 weeks of pregnancy. Leave can be taken in one block or in two separate blocks of one week and must be taken within 56 weeks following bereavement.
-
-If an employee needs to take parental bereavement leave within the first 56 days of their bereavement, they can take the leave straight away without having to provide any notice. An employee should contact their manager as soon as practically possible to make them aware.  
-To take parental bereavement leave more than 56 days after their bereavement, an employee should give their manager at least one week's notice.
-
-The Company will sympathetically consider requests for leave to deal with emergency situations involving the injury or serious illness of an immediate family member or dependant. In these circumstances the Company offers up to a maximum of five days paid compassionate leave to deal with each emergency at manager's discretion.",0.9815521240234375
-I am an independent contractor providing services to Wood Group in the UK. Do the company's Maternity and Paternity procedures apply to me?,I can only answer about our policies based on the provided documents. I do not have information on that.,"This procedure outlines the rights of employees relating to paternity leave and sets out the arrangements for taking leave.  
-This procedure applies to all employees who are employed by Wood in the United Kingdom. Section 2.6.2 applies to eligible employees engaged on a Professional Technical contract of employment; no other contract styles are eligible.
+Time off for dependants would not cover a situation that an employee knows about in advance, for example taking a child to a hospital appointment.  
+#### 2.1.2 Bereavement/Parental Bereavement Leave  
+The Company offers up to a maximum of five days paid leave per bereavement to employees who experience bereavement in their immediate family or someone of similarly close connections. An employee should contact their manager as soon as practically possible to make them aware.",1.7818543910980225
+I am an independent contractor providing services to Wood Group in the UK. Do the company's Maternity and Paternity procedures apply to me?,I can only answer about our policies based on the provided documents. I do not have information on that.,"This procedure sets out the rights of employees who are pregnant or have recently given birth, including time off for antenatal care and entitlement to maternity leave and pay.  
+This procedure applies to all employees who are employed by Wood in the United Kingdom. Sections 2.7.1.2 and 2.7.1.3 apply to eligible employees on a Professional Technical contract of employment; no other contract styles are eligible.
 
 This procedure sets out the rights of employees who are pregnant or have recently given birth, including time off for antenatal care and entitlement to maternity leave and pay.  
 This procedure applies to all employees who are employed by Wood in the United Kingdom. Sections 2.7.1.2 and 2.7.1.3 apply to eligible employees on a Professional Technical contract of employment; no other contract styles are eligible.
 
-This procedure sets out the rights of employees when a child is matched and placed for adoption, including time off for attending adoption appointments and entitlement to adoption leave and pay.  
-This procedure applies to all employees who are employed by Wood in the United Kingdom. Sections 2.6.1.2 and 2.6.1.3 apply to eligible employees on a Professional Technical contract of employment; no other contract styles are eligible.
+This procedure outlines the rights of employees relating to paternity leave and sets out the arrangements for taking leave.  
+This procedure applies to all employees who are employed by Wood in the United Kingdom. Section 2.6.2 applies to eligible employees engaged on a Professional Technical contract of employment; no other contract styles are eligible.
 
-This procedure applies to all employees who are employed by Wood in the United Kingdom. If the mother/adopter is employed by the Company, their partner must (where relevant) submit any notifications to take shared parental leave to their own employer. Similarly, if it is the partner who is employed by the Company, the mother/adopter must (where relevant) submit any notifications to take shared parental leave to their own employer. Both parties should ensure that they are each liaising with",1.0096335411071777
+This procedure outlines the rights of employees relating to paternity leave and sets out the arrangements for taking leave.  
+This procedure applies to all employees who are employed by Wood in the United Kingdom. Section 2.6.2 applies to eligible employees engaged on a Professional Technical contract of employment; no other contract styles are eligible.",1.9207019805908203
+"If I am sick during my scheduled annual leave, can I reclaim those days as sickness absence instead?","According to our policy, if you fall sick or are injured while on annual leave, you can transfer to sick leave and take replacement annual leave at a later time, subject to submitting the required medical evidence.
+
+* You can transfer to sick leave
+* Replacement annual leave will be allowed at a later time
+* Medical evidence is required","An employee who is absent on sick leave will continue to accrue their full contractual annual leave entitlement and will be given the opportunity to take this within 18 months of the annual leave year in which it was accrued.  
+An employee on sick leave may also apply to take their annual leave entitlement while on sick leave. The annual leave dates must be approved in accordance with the relevant leave procedure.
+
+An employee who is absent on sick leave will continue to accrue their full contractual annual leave entitlement and will be given the opportunity to take this within 18 months of the annual leave year in which it was accrued.  
+An employee on sick leave may also apply to take their annual leave entitlement while on sick leave. The annual leave dates must be approved in accordance with the relevant leave procedure.
+
+#### 2.9.3 Annual Leave  
+Where an employee falls sick or is injured while on annual leave, the Company will allow the employee to transfer to sick leave and take replacement annual leave at a later time. This is subject to the employee submitting the required medical evidence.
+
+#### 2.9.3 Annual Leave  
+Where an employee falls sick or is injured while on annual leave, the Company will allow the employee to transfer to sick leave and take replacement annual leave at a later time. This is subject to the employee submitting the required medical evidence.",18.14743423461914
+"If I am the secondary adopter, how many unpaid adoption appointments am I entitled to take time off for?",You are entitled to take reasonable unpaid time off to attend up to **2** adoption appointments.,"The main adopter will be entitled to paid time off during working hours to attend up to five adoption appointments for the purposes of enabling the employee and their partner to have contact with the child prior to placement, and for any other purpose connected with the adoption for example, to meet with the professionals involved in the care of the child. The secondary adopter will be entitled to take reasonable unpaid time off to attend up to two adoption appointments.
+
+The main adopter will be entitled to paid time off during working hours to attend up to five adoption appointments for the purposes of enabling the employee and their partner to have contact with the child prior to placement, and for any other purpose connected with the adoption for example, to meet with the professionals involved in the care of the child. The secondary adopter will be entitled to take reasonable unpaid time off to attend up to two adoption appointments.
+
+To be eligible to take this time off, the employee could be married to or be the civil partner of the pregnant woman, living with the pregnant woman in an enduring family relationship or the biological father of the expected child. In the case of adoptive parents, the secondary adopter will be entitled to take reasonable unpaid time off for up to two adoption appointments. In the case of surrogacy arrangements, reasonable unpaid time off to attend up to two antenatal appointments is provided
+
+To be eligible to take this time off, the employee could be married to or be the civil partner of the pregnant woman, living with the pregnant woman in an enduring family relationship or the biological father of the expected child. In the case of adoptive parents, the secondary adopter will be entitled to take reasonable unpaid time off for up to two adoption appointments. In the case of surrogacy arrangements, reasonable unpaid time off to attend up to two antenatal appointments is provided",7.931334733963013
+Do I still accrue my normal annual leave while I am away on Maternity Leave?,"**Yes**, you will continue to accrue your normal annual leave while you are away on Maternity Leave. 
+
+* According to our policy, annual leave will continue to accrue at the rate provided in your terms and conditions of employment during maternity leave.","Annual leave may be added to the beginning or the end of maternity leave. It is expected that annual leave accrued during the current holiday year up to the maternity leave start date is to be taken prior to starting maternity leave. Where possible, annual leave accrued during maternity leave should be used within the current holiday year. However, accrued annual leave may roll over into the following holiday year in circumstances where it is not possible for the employee to take their accrued
+
+Annual leave may be added to the beginning or the end of maternity leave. It is expected that annual leave accrued during the current holiday year up to the maternity leave start date is to be taken prior to starting maternity leave. Where possible, annual leave accrued during maternity leave should be used within the current holiday year. However, accrued annual leave may roll over into the following holiday year in circumstances where it is not possible for the employee to take their accrued
+
+##### 2.7.1.4 Maternity Allowance  
+If an employee is not entitled to SMP or CMP, they may be eligible for Maternity Allowance from their local Social Security or Job Centre Plus office.  
+#### 2.7.2 Annual Leave  
+During maternity leave, annual leave will continue to accrue at the rate provided in the employee's terms and conditions of employment. Employees are to discuss their intentions regarding taking annual leave with their manager.
+
+##### 2.7.1.4 Maternity Allowance  
+If an employee is not entitled to SMP or CMP, they may be eligible for Maternity Allowance from their local Social Security or Job Centre Plus office.  
+#### 2.7.2 Annual Leave  
+During maternity leave, annual leave will continue to accrue at the rate provided in the employee's terms and conditions of employment. Employees are to discuss their intentions regarding taking annual leave with their manager.",1.6955618858337402
+Is there a maximum limit to the number of 'keeping in touch' (KIT) days I can take during my Adoption Leave?,"* Yes, there is a maximum limit to the number of 'keeping in touch' (KIT) days you can take during your Adoption Leave.
+* The maximum limit is 10 days.","An employee can agree to work for the Company (or to attend training) for up to ten days during adoption leave without that work bringing the adoption leave period to an end. These days are known as 'keeping in touch' (KIT) days.
+
+An employee can agree to work for the Company (or to attend training) for up to ten days during adoption leave without that work bringing the adoption leave period to an end. These days are known as 'keeping in touch' (KIT) days.
+
+KIT days are optional and by agreement between the employee and the Company. The Company has no right to require the employee to carry out any work, and employees have no right to undertake any work during their adoption leave. Employees must not work at all during the compulsory adoption leave period.
+
+KIT days are optional and by agreement between the employee and the Company. The Company has no right to require the employee to carry out any work, and employees have no right to undertake any work during their adoption leave. Employees must not work at all during the compulsory adoption leave period.",1.8820171356201172

@@ -33,12 +33,10 @@ We built a custom `evaluate.py` script that iterates over 15 hardcoded test ques
 ### Quantitative Metrics (Latency)
 *Note: The latency metrics below represent the pure end-to-end response time of the system. An intentional 3-second artificial `time.sleep()` was injected between requests to prevent triggering `429 RESOURCE_EXHAUSTED` errors on free-tier API keys during batch processing, but this artificial delay is excluded from the true latency calculation.*
 
-**Compute vs. Latency Trade-off:** By migrating from a local PyTorch embedding model to the `GeminiRESTEmbeddings` API to solve Render's OOM crashes, an intentional ~500ms network transit delay was introduced. This slight increase in latency is a deliberate architectural trade-off made to drop backend memory usage by >300MB, guaranteeing deployment stability on free cloud tiers.
-
-- **Total Questions Evaluated**: 19
-- **Average Latency**: 3.13s
-- **p50 Latency (Median)**: 1.78s
-- **p95 Latency**: 8.95s
+- **Total Questions Evaluated**: 15
+- **Average Latency**: 1.00s
+- **p50 Latency (Median)**: 1.00s
+- **p95 Latency**: 1.07s
 - **Errors Encountered**: 0
 
 ### Qualitative Metrics

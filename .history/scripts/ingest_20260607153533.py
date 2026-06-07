@@ -17,7 +17,6 @@ import os
 import glob
 from dotenv import load_dotenv
 import time
-import random
 from langchain_community.document_loaders import TextLoader
 from langchain_text_splitters import MarkdownHeaderTextSplitter, RecursiveCharacterTextSplitter
 import requests
@@ -132,36 +131,20 @@ class GeminiRESTEmbeddings(Embeddings):
         for i in range(0, len(texts), batch_size):
             batch_texts = texts[i:i + batch_size]
             
-            print(f"    -> Embedding batch {i//batch_size + 1} of {len(texts)//batch_size + 1} (size: {len(batch_texts)})...")
-
-            requests_payload = {
-                "requests": [
-                    {"model": "models/gemini-embedding-2", "content": {"parts": [{"text": text}]}}
-                    for text in batch_texts
-                ]
-            }
+            requests_payload = [
+                {"model": "models/gemini-embedding-2", "content": {"parts": [{"text": text}]}}
+                for text in batch_texts
+            ]
             
-            # --- Implement Exponential Backoff with Jitter ---
-            max_retries = 5
-            base_delay = 5  # Start with a 5-second delay
-            for attempt in range(max_retries):
-                try:
-                    response = requests.post(batch_url, json=requests_payload)
-                    response.raise_for_status()
-                    print("    -> Batch embedded successfully.")
-                    break  # Success
-                except requests.exceptions.HTTPError as e:
-                    if e.response.status_code == 429 and attempt < max_retries - 1:
-                        wait_time = base_delay * (2 ** attempt) + random.uniform(0, 1)
-                        print(f"    [WARNING] Rate limit hit (429). Retrying in {int(wait_time)} seconds...")
-                        time.sleep(wait_time)
-                    else:
-                        print(f"    [ERROR] A non-retriable error occurred or max retries reached: {e}")
-                        raise
-            # --- End Exponential Backoff ---
+            response = requests.post(batch_url, json={"requests": requests_payload})
+            response.raise_for_status()
             
             batch_embeddings = [item["values"] for item in response.json()["embeddings"]]
             all_embeddings.extend(batch_embeddings)
+
+            # Add a small delay to respect the API's rate limits (e.g., 60 RPM)
+            if i + batch_size < len(texts):
+                time.sleep(2)
             
         return all_embeddings
 

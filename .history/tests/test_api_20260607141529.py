@@ -37,7 +37,7 @@ def test_chat_endpoint_success(mocker):
     #    methods that might not be simple attributes.
     mock_docs = [Document(page_content="This is a mock policy document.", metadata={"source": "mock_policy.md"})]
     mock_retriever = mocker.MagicMock()
-    mock_retriever.invoke.return_value = mock_docs
+    mock_retriever.get_relevant_documents.return_value = mock_docs
     mocker.patch('api.retriever', new=mock_retriever)
 
     # 2. Mock the final output of the entire RAG chain.
@@ -60,6 +60,6 @@ def test_chat_endpoint_success(mocker):
     assert response_data["sources"][0]["source"] == "mock_policy.md"
 
     # Verify that our mocks were called
-    mock_retriever.invoke.assert_called_once_with("What is the policy?")
+    mock_retriever.get_relevant_documents.assert_called_once_with("What is the policy?")
     # We can no longer assert that ChatGroq was called, as we are now mocking
     # the entire chain's output directly.

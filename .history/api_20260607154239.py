@@ -128,14 +128,15 @@ def health_check():
 def chat(request: ChatRequest):
     try:
         # Retrieve context directly from vector store
-        # Use the modern .invoke() method for Runnable retrievers
-        final_docs = retriever.invoke(request.question)
+        # Use get_relevant_documents for compatibility with older LangChain versions
+        # where retrievers are not yet 'Runnable' with an .invoke() method.
+        final_docs = retriever.get_relevant_documents(request.question)
         
         # ==============================================================================
         # OPTIONAL: Two-Stage Retrieval Logic (Uncomment for larger hosts)
         # Note: If uncommented, remember to change the retriever `k` value above to 15!
         #
-        # base_docs = retriever.invoke(request.question)
+        # base_docs = retriever.get_relevant_documents(request.question)
         # if base_docs:
         #     pairs = [[request.question, doc.page_content] for doc in base_docs]
         #     scores = cross_encoder.predict(pairs)

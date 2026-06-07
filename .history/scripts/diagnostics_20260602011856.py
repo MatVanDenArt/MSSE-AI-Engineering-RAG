@@ -1,27 +1,8 @@
-"""
-This script is a pre-flight diagnostic tool to verify environment setup.
-
-It checks for the presence and validity of API keys for the services
-this application depends on: Google Gemini and Groq.
-
-For each service, it:
-1.  Loads the API key from the .env file.
-2.  Makes an authenticated API call to a basic endpoint (e.g., list models).
-3.  Confirms that the required model for the application is available.
-4.  Prints clear [SUCCESS], [WARNING], or [ERROR] messages to help developers
-    quickly identify and resolve configuration issues.
-"""
 import os
 import requests
 from dotenv import load_dotenv
 
 def test_gemini(api_key):
-    """
-    Tests the connectivity and model availability for the Google Gemini API.
-
-    Args:
-        api_key (str): The Google Gemini API key.
-    """
     print("\n--- Testing Google Gemini API ---")
     if not api_key:
         print("[ERROR] NO GEMINI API KEY FOUND in .env")
@@ -47,12 +28,6 @@ def test_gemini(api_key):
         print(f"[ERROR] Error connecting to Gemini API: {e}")
 
 def test_groq(api_key):
-    """
-    Tests the connectivity and model availability for the Groq API.
-
-    Args:
-        api_key (str): The Groq API key.
-    """
     print("\n--- Testing Groq API ---")
     if not api_key:
         print("[ERROR] NO GROQ API KEY FOUND in .env")
