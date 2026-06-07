@@ -1,3 +1,8 @@
+"""
+FastAPI backend for the Wood Group HR Assistant.
+Handles LLM routing, RAG orchestration via LangChain, and interactions with the local ChromaDB.
+"""
+
 import os
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
@@ -21,6 +26,10 @@ from langchain_core.output_parsers import StrOutputParser
 load_dotenv()
 
 class AppConfig:
+    """
+    Centralized configuration class that loads and validates environment variables.
+    Provides fail-fast behavior if required API keys are missing.
+    """
     def __init__(self):
         self.groq_api_key = os.environ.get("GROQ_API_KEY")
         self.gemini_api_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
@@ -36,11 +45,20 @@ config = AppConfig()
 app = FastAPI(title="Wood Group HR API")
 
 class GeminiRESTEmbeddings(Embeddings):
+    """
+    Custom LangChain Embeddings class that interfaces directly with Google's Gemini REST API.
+    Designed to offload vector math to the cloud, circumventing Render's strict 512MB RAM limits
+    by removing the need for a local PyTorch installation.
+    """
     def __init__(self, api_key: str):
         self.api_key = api_key
         self.url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-2:embedContent?key={api_key}"
 
     def embed_documents(self, texts: List[str]) -> List[List[float]]:
+        """
+        Embeds a list of documents in batches to respect Gemini's 100-document batch limit.
+        Implements exponential backoff with jitter to handle rate limits (429 HTTP responses).
+        """
         batch_url = self.url.replace(":embedContent", ":batchEmbedContents")
         all_embeddings = []
         # The Gemini API has a limit of 100 documents per batch request.
@@ -78,6 +96,7 @@ class GeminiRESTEmbeddings(Embeddings):
         return all_embeddings
 
     def embed_query(self, text: str) -> List[float]:
+        """Embeds a single query string."""
         return self.embed_documents([text])[0]
 
 # Initialize Retriever at startup (Fetch Top 4 directly for Render Free Tier)
@@ -113,19 +132,27 @@ Question: {question}
 Helpful Answer:"""
 prompt = PromptTemplate.from_template(template)
 
-def format_docs(docs):
+def format_docs(docs) -> str:
+    """Combines retrieved document chunks into a single formatted string."""
     return "\n\n".join(doc.page_content for doc in docs)
 
 class ChatRequest(BaseModel):
+    """Pydantic model defining the expected payload for the /chat endpoint."""
     question: str
     provider: str = "Groq"
 
 @app.get("/health")
-def health_check():
+def health_check() -> dict:
+    """Simple health check endpoint for Render deployment monitoring."""
     return {"status": "healthy"}
 
 @app.post("/chat")
-def chat(request: ChatRequest):
+def chat(request: ChatRequest) -> dict:
+    """
+    Main chat endpoint. Receives a user question, retrieves relevant context from ChromaDB,
+    constructs the LangChain prompt, and dynamically routes the request to the specified LLM.
+    Implements automated failover if the primary LLM encounters an error or rate limit.
+    """
     try:
         # Retrieve context directly from vector store
         # Use the modern .invoke() method for Runnable retrievers
@@ -146,23 +173,58 @@ def chat(request: ChatRequest):
         #     final_docs = []
         # ==============================================================================
         
-        if request.provider == "Groq":
-            if not config.groq_api_key:
-                raise HTTPException(status_code=500, detail="Groq provider not available: API key not configured on server.")
-            llm = ChatGroq(model="llama-3.1-8b-instant", temperature=0, api_key=config.groq_api_key)
-        else:
-            if not config.gemini_api_key:
-                raise HTTPException(status_code=500, detail="Gemini provider not available: API key not configured on server.")
-            llm = ChatGoogleGenerativeAI(model="gemini-3.5-flash", google_api_key=config.gemini_api_key, temperature=0)
-            
-        chain = (
-            {"context": lambda x: format_docs(final_docs), "question": RunnablePassthrough()}
-            | prompt
-            | llm
-            | StrOutputParser()
-        )
+        # Define LLM instances with max_retries=0 to ensure they "fail fast" on rate limits
+        llm_groq = None
+        llm_gemini = None
         
-        answer = chain.invoke(request.question)
+        if config.groq_api_key:
+            llm_groq = ChatGroq(model="llama-3.1-8b-instant", temperature=0, max_tokens=500, api_key=config.groq_api_key, max_retries=0)
+        
+        if config.gemini_api_key:
+            llm_gemini = ChatGoogleGenerativeAI(model="gemini-3.5-flash", google_api_key=config.gemini_api_key, temperature=0, max_tokens=500, max_retries=0)
+
+        # Determine the primary and fallback LLMs based on user preference
+        if request.provider == "Groq":
+            primary_llm = llm_groq
+            primary_name = "Groq"
+            fallback_llm = llm_gemini
+            fallback_name = "Gemini"
+        else:
+            primary_llm = llm_gemini
+            primary_name = "Gemini"
+            fallback_llm = llm_groq
+            fallback_name = "Groq"
+
+        if not primary_llm and not fallback_llm:
+            raise HTTPException(status_code=500, detail="No LLM providers are available on the server.")
+
+        def execute_chain(llm):
+            chain = (
+                {"context": lambda x: format_docs(final_docs), "question": RunnablePassthrough()}
+                | prompt
+                | llm
+                | StrOutputParser()
+            )
+            return chain.invoke(request.question)
+
+        used_provider = primary_name
+        answer = None
+        
+        try:
+            if not primary_llm:
+                raise Exception(f"{primary_name} is not configured.")
+            answer = execute_chain(primary_llm)
+        except Exception as e:
+            print(f"--- Fallback Triggered: {primary_name} failed. Error: {str(e)}")
+            if fallback_llm:
+                try:
+                    answer = execute_chain(fallback_llm)
+                    used_provider = fallback_name
+                except Exception as fallback_error:
+                    print(f"--- Fallback Failed: {fallback_name} also failed. Error: {str(fallback_error)}")
+                    raise HTTPException(status_code=502, detail=f"Both primary and fallback models failed. Primary Error: {str(e)}. Fallback Error: {str(fallback_error)}")
+            else:
+                raise HTTPException(status_code=502, detail=f"Primary model {primary_name} failed and no fallback is configured. Error: {str(e)}")
         
         sources = [
             {"content": doc.page_content, "source": doc.metadata.get("source", "Unknown")}
@@ -171,7 +233,8 @@ def chat(request: ChatRequest):
         
         return {
             "answer": answer,
-            "sources": sources
+            "sources": sources,
+            "used_provider": used_provider
         }
     except Exception as e:
         # Log the full error to the console for easier debugging
