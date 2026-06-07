@@ -75,7 +75,7 @@ class GeminiRESTEmbeddings(Embeddings):
             }
             
             # --- Implement Exponential Backoff with Jitter ---
-            max_retries = 5
+            max_retries = 3
             base_delay = 5  # Start with a 5-second delay
             for attempt in range(max_retries):
                 try:
@@ -236,6 +236,11 @@ def chat(request: ChatRequest) -> dict:
             "sources": sources,
             "used_provider": used_provider
         }
+    except requests.exceptions.HTTPError as e:
+        if e.response.status_code == 429:
+            print("--- EMBEDDING RATE LIMIT EXCEEDED ---")
+            raise HTTPException(status_code=429, detail="The Google Gemini Embedding API is currently rate-limited (Google's Free Tier limits). Please wait 1-2 minutes and try again.")
+        raise HTTPException(status_code=500, detail=str(e))
     except Exception as e:
         # Log the full error to the console for easier debugging
         import traceback

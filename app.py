@@ -145,7 +145,7 @@ if prompt_input := st.chat_input("Ask a question about HR policies..."):
                     st.error(f"Backend API Error: {error_detail}")
             except requests.exceptions.RequestException as e:
                 # This catches generic network errors (like DNS failures or connection timeouts)
-                st.warning("⏳ The backend AI server is currently waking up from sleep mode. Please wait a moment and try again!")
+                st.error(f"Network Connection Error to Backend: {str(e)}")
             except Exception as e:
                 st.error(f"An unexpected error occurred: {e}")
 
